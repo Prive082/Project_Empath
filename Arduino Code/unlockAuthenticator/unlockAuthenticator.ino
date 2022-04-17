@@ -17,6 +17,8 @@ void setup() {
   mfrc522.PCD_Init();
   Serial.println("Put your card near the reader");
   Serial.println();
+  pinMode(7, OUTPUT);
+  digitalWrite(7, HIGH);
 }
 
 void loop() {
@@ -75,11 +77,16 @@ void loop() {
   Serial.println(passcode);
 
   if(passcode == "penis"){
-    digitalWrite(8, HIGH);
+    digitalWrite(7, HIGH);
     Serial.println("Passcode Accepted");
   } else {
     Serial.println("brian");
-    
+    delay(2000);
+    digitalWrite(7,LOW);
+    Serial.println("Outputting Shock");
+    delay(200);
+    digitalWrite(7,HIGH);
+    Serial.println("OFFF");
   }
 }
   
